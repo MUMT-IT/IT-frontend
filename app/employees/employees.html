@@ -1,6 +1,39 @@
-<p><h4>People List</h4></p>
-<p>
-  <ul class="collection">
-    <li class="collection-item">Likit Preeyanon</li>
-  </ul>
-</p>
+<h4>People List</h4>
+</div>
+<div class="row">
+  <div class="col s6 input-field">
+    <select class="browser-default" ng-model="affiliation" ng-change="selectAffil()">
+      <option value="0">All</option>
+      <option value="1">Clinical Chemistry</option>
+      <option value="2">Microbiology</option>
+    </select>
+  </div>
+  <div class="col s6 input-field">
+    <i class="material-icons prefix">search</i>
+    <input type="text" id="peoplesearch"
+      ng-model='query' ng-change='searchFor()' placeholder="Search">
+  </div>
+</div>
+<div class="row">
+  <div class="col s12">
+    <div ng-repeat="person in flt_employees">
+      <div class="card horizontal">
+        <div class="card-image">
+          <i class="material-icons circle">person</i>
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <h6>{{person.first_th}} {{person.last_th}}</h6>
+            <p>{{person.first_en}} {{person.last_en}}<br>
+              Affiliation: {{person.affiliation_id}} <br>
+              Email: {{person.email}} <br>
+              Employed date: {{person.employed_date | date: 'mediumDate'}}
+            </p>
+          </div> <!-- card content -->
+          <div class="card-action">
+            <a href="#">Profile</a>
+          </div>
+        </div> <!-- card stacked -->
+      </div> <!-- card -->
+  </div> <!-- ngRepeat -->
+</div> <!-- row -->
