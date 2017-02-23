@@ -1,0 +1,103 @@
+<h2>Let's add them some employee.</h2>
+<div class="card">
+    <div class="card-block">
+        <form name="newEmployee">
+        <div class="form-group row">
+            <label for="firstTH" class="col-2 col-form-label">Thai first name</label>
+            <div class="col-5">
+                <input type="text" class="form-control"
+                    name="firstTH" ng-model="empl.firstTH"
+                    placeholder=""/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="lastTH" class="col-2 col-form-label">Thai last name</label>
+            <div class="col-5">
+                <input type="text" class="form-control"
+                    name="lastTH" ng-model="empl.lastTH"
+                    placeholder=""/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="firstEN" class="col-2 col-form-label">English first name</label>
+            <div class="col-5">
+                <input type="text" class="form-control"
+                    name="firstEN" ng-model="empl.firstEN"
+                    placeholder=""/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="lastEN" class="col-2 col-form-label">English last name</label>
+            <div class="col-5">
+                <input type="text" class="form-control"
+                    name="lastEN" ng-model="empl.lastEN" placeholder=""/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="dob" class="col-2 col-form-label">Date of birth</label>
+            <div class="col-5">
+                <input type="date" class="form-control"
+                    name="dob" ng-model="empl.dob"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="affiliation" class="col-2 col-form-label">Affiliation</label>
+            <div class="col-5">
+                <select ng-model="empl.affil_id"
+                    ng-options="affil.id as affil.name for affil in affils"
+                    class="custom-select">
+                    <option selected value="">Select affiliation</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="email" class="col-2 col-form-label">Email</label>
+            <div class="col-5">
+                <input type="email" class="form-control"
+                    name="email" ng-model="empl.email" placeholder="wan.na@mahidol.ac.th"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="officeCampus" class="col-2 col-form-label">Office campus</label>
+            <div class="col-5">
+                <select ng-model="empl.officeCampus" class="custom-select">
+                    <option selected value="">Select campus</option>
+                    <option value="1">Siriraj</option>
+                    <option value="2">Salaya</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="officeRoom" class="col-2 col-form-label">Office room</label>
+            <div class="col-5">
+                <input type="text" class="form-control"
+                    name="officeRoom" ng-model="empl.officeRoom"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="telephone" class="col-2 col-form-label">Cell phone</label>
+            <div class="col-5">
+                <input type="tel" class="form-control"
+                    name="telephone" ng-model="empl.telephone" placeholder="090-000-0000"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="licensePlate" class="col-2 col-form-label">A Car License Plate</label>
+            <div class="col-5">
+                <input type="text" class="form-control" aria-describedby="licensePlateHelp"
+                    name="licensePlate" ng-model="empl.licensePlate" placeholder="XXX-XXXX"/>
+                <small id="licensePlateHelp"
+                    class="form-text text-muted">For emergency parking issue only.</small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="employedDate" class="col-2 col-form-label">Employed date</label>
+            <div class="col-5">
+                <input type="date" class="form-control"
+                    name="employedDate" ng-model="empl.employedDate"/>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+</div>
