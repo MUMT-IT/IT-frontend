@@ -1,4 +1,4 @@
-<h2>Let's add them some employee.</h2>
+<h2>Employee Form</h2>
 <div class="card">
     <div class="card-block">
         <form name="newEmployee">
@@ -44,7 +44,7 @@
             <label for="affiliation" class="col-2 col-form-label">Affiliation</label>
             <div class="col-5">
                 <select ng-model="empl.affil_id"
-                    ng-options="affil.id as affil.name for affil in affils"
+                    ng-options="affil.id as affil.name_th for affil in affils"
                     class="custom-select">
                     <option selected value="">Select affiliation</option>
                 </select>
