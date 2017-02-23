@@ -6,8 +6,22 @@ angular.module('myApp.employees', ['ngRoute'])
   $routeProvider.when('/employees', {
     templateUrl: 'employees/employees.html',
     controller: 'EmployeeController'
+  })
+  .when('/employees/add', {
+    templateUrl: 'employees/add.html',
+    controller: 'AddEmployeeController'
   });
 }])
+
+.controller('AddEmployeeController', function($scope, $http) {
+  $http.get('http://localhost:5000/api/affils/').then(
+    function(response) {
+      $scope.affils = response.data.affils
+    }, function(error) {
+      console.log('Cannot load data.');
+    }
+  )
+})
 
 .controller('EmployeeController', function($scope, $http) {
   $http.get('http://localhost:5000/api/employees/').then(
