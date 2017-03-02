@@ -1,8 +1,127 @@
+<br/>
 <div class="row">
-    <canvas id="wrs" class="chart chart-bar" chart-data="wrs_data"
-        chart-labels="wrs_labels" chart-series="wrs_series"
-        chart-options="wrs_chart_options" chart-dataset-override="cutoff">
-    </canvas>
+    <div class="card col-md-12">
+        <div class="card-block">
+            <h4 class="card-title">ผลการประเมินตนเองของผู้เรียนปี 4 ต่อพัฒนาการตามคุณลักษณะ Wellrounded Scholar</h4>
+            <canvas id="wrs" class="chart chart-bar" chart-data="wrs_data"
+                chart-labels="wrs_labels" chart-series="wrs_series"
+                chart-options="wrs_chart_options" chart-dataset-override="cutoff">
+            </canvas>
+        </div>
+    </div>
+</div>
+<br/>
+<div class="row">
+    <div class="card col-md-12">
+        <div class="card-block">
+            <h4 class="card-title">สัมฤทธิผลของรูปแบบการจัดการเรียนการสอนต่อการพัฒนาคุณลักษณะ Wellrounded Scholar</h4>
+            <div class="row">
+                <div class="col">
+                    <h3>Lecture</h3>
+                    <canvas id="wrs_teaching_lecture" class="chart chart-bar" chart-data="wrs_teaching_chart_data['lecture']"
+                        chart-labels="wrs_teaching_labels" chart-series="wrs_teaching_series"
+                        chart-options="wrs_chart_options">
+                    </canvas>
+                </div>
+                <div class="col">
+                    <h3>Laboratory</h3>
+                    <canvas id="wrs_teaching_lab" class="chart chart-bar" chart-data="wrs_teaching_chart_data['lab']"
+                        chart-labels="wrs_teaching_labels" chart-series="wrs_teaching_series"
+                        chart-options="wrs_chart_options">
+                    </canvas>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3>Discussion</h3>
+                    <canvas id="wrs_teaching_discussion" class="chart chart-bar" chart-data="wrs_teaching_chart_data['discussion']"
+                        chart-labels="wrs_teaching_labels" chart-series="wrs_teaching_series"
+                        chart-options="wrs_chart_options">
+                    </canvas>
+                </div>
+                <div class="col">
+                    <h3>Project</h3>
+                    <canvas id="wrs_teaching_project" class="chart chart-bar" chart-data="wrs_teaching_chart_data['project']"
+                        chart-labels="wrs_teaching_labels" chart-series="wrs_teaching_series"
+                        chart-options="wrs_chart_options">
+                    </canvas>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3>Transformative Learning</h3>
+                    <canvas id="wrs_teaching_transformative" class="chart chart-bar" chart-data="wrs_teaching_chart_data['transformative']"
+                        chart-labels="wrs_teaching_labels" chart-series="wrs_teaching_series"
+                        chart-options="wrs_chart_options">
+                    </canvas>
+                </div>
+                <div class="col">
+                    <h3>Problem-based Learning</h3>
+                    <canvas id="wrs_teaching_pbl" class="chart chart-bar" chart-data="wrs_teaching_chart_data['pbl']"
+                        chart-labels="wrs_teaching_labels" chart-series="wrs_teaching_series"
+                        chart-options="wrs_chart_options">
+                    </canvas>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3>Buzz Group</h3>
+                    <canvas id="wrs_teaching_buzzgroup" class="chart chart-bar" chart-data="wrs_teaching_chart_data['buzzgroup']"
+                        chart-labels="wrs_teaching_labels" chart-series="wrs_teaching_series"
+                        chart-options="wrs_chart_options">
+                    </canvas>
+                </div>
+                <div class="col">
+                    <h3>Internship</h3>
+                    <canvas id="wrs_teaching_intern" class="chart chart-bar" chart-data="wrs_teaching_chart_data['intern']"
+                        chart-labels="wrs_teaching_labels" chart-series="wrs_teaching_series"
+                        chart-options="wrs_chart_options">
+                    </canvas>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3>Case Study</h3>
+                    <canvas id="wrs_teaching_casestudy" class="chart chart-bar" chart-data="wrs_teaching_chart_data['casestudy']"
+                        chart-labels="wrs_teaching_labels" chart-series="wrs_teaching_series"
+                        chart-options="wrs_chart_options">
+                    </canvas>
+                </div>
+                <div class="col">
+                    <h3>Role Play</h3>
+                    <canvas id="wrs_teaching_roleplay" class="chart chart-bar" chart-data="wrs_teaching_chart_data['roleplay']"
+                        chart-labels="wrs_teaching_labels" chart-series="wrs_teaching_series"
+                        chart-options="wrs_chart_options">
+                    </canvas>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3>Workgroup</h3>
+                    <canvas id="wrs_teaching_workgroup" class="chart chart-bar" chart-data="wrs_teaching_chart_data['workgroup']"
+                        chart-labels="wrs_teaching_labels" chart-series="wrs_teaching_series"
+                        chart-options="wrs_chart_options">
+                    </canvas>
+                </div>
+                <div class="col">
+                    <h3>Field Trip</h3>
+                    <canvas id="wrs_teaching_fieldtrip" class="chart chart-bar" chart-data="wrs_teaching_chart_data['fieldtrip']"
+                        chart-labels="wrs_teaching_labels" chart-series="wrs_teaching_series"
+                        chart-options="wrs_chart_options">
+                    </canvas>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Community-Based Learning</h3>
+                    <canvas id="wrs_teaching_community" class="chart chart-bar" chart-data="wrs_teaching_chart_data['community']"
+                        chart-labels="wrs_teaching_labels" chart-series="wrs_teaching_series"
+                        chart-options="wrs_chart_options">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!--
 <div class="row">
