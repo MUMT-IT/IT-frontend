@@ -140,4 +140,58 @@ angular.module('myApp.education', ['ngRoute'])
   }, function(error) {
     console.log(error);
   })
+  $http.get('http://localhost:5000/api/followup/results/').then(function(response) {
+    var empl_data = response.data;
+    $scope.empl_labels = [];
+    $scope.empl_series = [];
+    for(var i=0; i < empl_data.length; i++) {
+      if($scope.empl_labels.indexOf(empl_data[i].year) < 0) {
+        $scope.empl_labels.push(empl_data[i].year)
+      }
+      if($scope.empl_series.indexOf(empl_data[i].program.toUpperCase()) < 0) {
+        $scope.empl_series.push(empl_data[i].program.toUpperCase())
+      }
+    }
+    $scope.empl_labels.sort(function(a,b) { return parseInt(a) - parseInt(b)})
+    $scope.empl_labels.sort(function(a,b) { return a - b})
+    $scope.empl_data = [];
+    for(var i=0; i < $scope.empl_series.length; i++) {
+      var d = [];
+      for(var j=0; j < $scope.empl_labels.length; j++) {
+        for(var k=0; k < empl_data.length; k++) {
+          var item = empl_data[k];
+          if($scope.empl_labels[j]===item.year && $scope.empl_series[i]===item.program.toUpperCase())
+            d.push((parseFloat(empl_data[k].rate) * 100.0).toFixed(2));
+        }
+      }
+      $scope.empl_data.push(d)
+    }
+    $scope.empl_chart_options = {
+      'fill': false,
+      'animation': false,
+      'legend': {
+        'display': true
+      },
+      'scales': {
+        'yAxes': [{
+          'display': true,
+          'scaleLabel': {
+            'display': true,
+            'labelString': 'ร้อยละของผู้สำเร็จการศึกษาที่ได้งานทำหรือศึกษาต่อ',
+            'fontSize': 16
+          },
+          'ticks': {
+            'beginAtZero': true,
+            'fontSize': 16
+          }
+        }],
+        'xAxes': [{
+          'ticks': {
+            'fontSize': 16
+          }
+        }]
+      }
+    }
+    console.log($scope.empl_data);
+  })
 });
