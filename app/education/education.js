@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.education', ['ngRoute'])
+angular.module('myApp.education', ['ngRoute', 'chart.js'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/education', {
@@ -167,7 +167,14 @@ angular.module('myApp.education', ['ngRoute'])
       $scope.empl_data.push(d)
     }
     $scope.empl_chart_options = {
-      'fill': false,
+      'elements': {
+        'line': {
+          'fill': false,
+        },
+        'point': {
+          'radius': 6
+        }
+      },
       'animation': false,
       'legend': {
         'display': true
