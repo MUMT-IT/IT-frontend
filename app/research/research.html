@@ -1,7 +1,14 @@
 <div>
     <h3>Total Research Articles</h3>
     <canvas id="abstract_chart" class="chart chart-bar" chart-data="abstracts_chart_data"
-        chart-labels="abstracts_chart_labels"
+        chart-labels="abstracts_chart_labels" chart-options="chart_options">
+    </canvas>
+</div>
+<br/>
+<div>
+    <h3>Total Citations</h3>
+    <canvas id="citation_chart" class="chart chart-line" chart-data="citations_chart_data"
+        chart-labels="abstracts_chart_labels" chart-series="citations_series"
         chart-options="chart_options">
     </canvas>
 </div>

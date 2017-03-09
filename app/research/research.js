@@ -16,13 +16,25 @@ angular.module('myApp.research', ['ngRoute'])
   $http.get('http://localhost:5050/api/abstracts/').then(function(response) {
       $scope.abstracts_chart_labels = [];
       $scope.abstracts_chart_data = [];
-      for(var j=0; j < response.data.data.length; j++) {
-          var item = response.data.data[j];
-          $scope.abstracts_chart_labels.push(item.year);
-          $scope.abstracts_chart_data.push(item.value);
+      $scope.citations_chart_data = [];
+      var citations_annual = [];
+      var citations_cum = [];
+      var cc = 0; // cum citations
+      for(var j=0; j < response.data.articles.length; j++) {
+          var abs = response.data.articles[j];
+          $scope.abstracts_chart_labels.push(abs.year);
+          $scope.abstracts_chart_data.push(abs.value);
+          for(var i=0; i < response.data.citations.length; i++) {
+            var ctn = response.data.citations[i];
+            if(ctn.year == abs.year) {
+              citations_annual.push(ctn.value);
+              cc = cc + ctn.value;
+              citations_cum.push(cc);
+            }
+          }
       }
-      console.log($scope.abstracts_chart_data)
-      console.log($scope.abstracts_chart_labels)
+      $scope.citations_chart_data = [citations_annual, citations_cum];
+      $scope.citations_series = ['Annual', 'Cumulative'];
   })
 
   $scope.chart_options = {
