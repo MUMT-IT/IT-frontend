@@ -53,17 +53,6 @@ angular.module('myApp.education', ['ngRoute', 'chart.js'])
                 'creativity': 'ความคิดสร้างสรรค์',
                 'analysis': 'การคิดวิเคราะห์', 'leadership': 'ภาวะผู้นำ',
                 'socialresp': 'การมุ่งช่วยเหลือสังคม'};
-  $scope.cutoff = [
-    {
-      label: "Goal",
-      data: [3.5,3.5,3.5,3.5],
-      borderWidth: 1,
-      borderColor: 'rgb(236, 3, 3)',
-      backgroundColor: 'rgb(236, 3, 3)',
-      type: 'line',
-      fill: false
-    }
-  ]
   $scope.wrs_series = [];
   $http.get('http://localhost:5000/api/wrs/results/development/').then(function(response) {
       $scope.wrs_data_source = response.data;
@@ -91,6 +80,10 @@ angular.module('myApp.education', ['ngRoute', 'chart.js'])
           d.push(post_data[k][i]);
         }
         $scope.wrs_data.push(d.slice());
+      }
+      $scope.wrs_below_cutoff = [];
+      for(var j in post_data) {
+        console.log(series[j], post_data[j])
       }
     });
   $http.get('http://localhost:5000/api/wrs/results/teaching/').then(function(response) {
@@ -199,6 +192,63 @@ angular.module('myApp.education', ['ngRoute', 'chart.js'])
         }]
       }
     }
-    console.log($scope.empl_data);
+  })
+  $http.get('http://localhost:5000/api/evaluation/results/').then(function(response) {
+    $scope.eval_results = {};
+    var programs = [];
+    var years = [];
+    var item;
+    for(var i=0; i < response.data.length; i++) {
+      item = response.data[i];
+      if(programs.indexOf(item.program) < 0)
+        programs.push(item.program);
+      if(years.indexOf(item.year) < 0)
+        years.push(item.year);
+    }
+    programs.sort(function(a,b) { return a - b });
+    years.sort(function(a,b) { return parseInt(a) - parseInt(b) });
+    $scope.eval_results = [];
+    var temp = {};
+    for(var k=0; k < years.length; k++) {
+      temp['avg_analytics'] = [];
+      temp['avg_thinking'] = [];
+      temp['avg_relation'] = [];
+      temp['avg_professional'] = [];
+      temp['avg_morals'] = [];
+      temp['avg_identity'] = [];
+      temp['avg_overall'] = [];
+      temp['avg_knowledge'] = [];
+      for(var j=0; j < programs.length; j++) {
+        for(var i=0; i < response.data.length; i++) {
+          item = response.data[i];
+          if(item.year === years[k] && item.program === programs[j]) {
+            temp['avg_analytics'].push(item.avg_analytics);
+            temp['avg_thinking'].push(item.avg_thinking);
+            temp['avg_relation'].push(item.avg_relation);
+            temp['avg_professional'].push(item.avg_professional);
+            temp['avg_morals'].push(item.avg_morals);
+            temp['avg_identity'].push(item.avg_identity);
+            temp['avg_overall'].push(item.avg_overall);
+            temp['avg_knowledge'].push(item.avg_knowledge);
+          }
+        }
+      }
+      $scope.eval_results.push(temp['avg_knowledge'].slice());
+      $scope.eval_results.push(temp['avg_professional'].slice());
+      $scope.eval_results.push(temp['avg_analytics'].slice());
+      $scope.eval_results.push(temp['avg_thinking'].slice());
+      $scope.eval_results.push(temp['avg_relation'].slice());
+      $scope.eval_results.push(temp['avg_morals'].slice());
+      $scope.eval_results.push(temp['avg_identity'].slice());
+      $scope.eval_results.push(temp['avg_overall'].slice());
+    }
+    $scope.eval_series = ['ความรู้', 'ทักษะทางวิชาชีพ', 'การคิดวิเคราะห์',
+                      'ทักษะทางปัญญา', 'ความสัมพันธ์กับเพื่อนร่วมงาน',
+                      'คุณธรรมจริยธรรม', 'อัตลักษณ์', 'โดยรวม']
+    $scope.eval_labels = [];
+    for(var i=0; i < years.length; i++) {
+      for(var j=0; j < programs.length; j++)
+        $scope.eval_labels.push(years[i] + "-" + programs[j])
+    }
   })
 });
