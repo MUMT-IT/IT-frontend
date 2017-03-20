@@ -1,3 +1,4 @@
+<h1>Research Summary</h1>
 <div>
     <h3>Total Research Articles</h3>
     <canvas id="abstract_chart" class="chart chart-bar" chart-data="abstracts_chart_data"
@@ -13,8 +14,38 @@
     </canvas>
 </div>
 <br/>
+<h2>Research Performance Benchmarked with Allied Institutes</h2>
+<p>
+    mumt=Faculty of Medical Technology, Mahidol University<br/>
+    cmmt=Department of Medical Technology, Chiang Mai University<br/>
+    kkmt=Division of Medical Sciences, Khon Kaen University
+</p>
 <div>
-    <h3>Year 2017 Article List</h3>
+    <h3>Cumulative Number of Articles</h3>
+    <canvas id="total_articles_comp_chart" class="chart chart-line" chart-data="total_articles_comp"
+        chart-labels="total_articles_comp_labels" chart-series="total_articles_comp_series"
+        chart-options="chart_options">
+    </canvas>
+</div>
+<br/>
+<div>
+    <h3>Research Articles In Selected Subject Areas</h3>
+    <canvas id="subject_area_chart" class="chart chart-bar" chart-data="subject_areas_data"
+        chart-labels="subject_areas_labels" chart-options="subject_areas_chart_options"
+        chart-series="subject_areas_series">
+    </canvas>
+</div>
+<br/>
+<div>
+    <h3>Citations In Selected Subject Areas</h3>
+    <canvas id="subject_area_chart" class="chart chart-bar" chart-data="subject_areas_citations_data"
+        chart-labels="subject_areas_labels" chart-options="subject_areas_chart_options"
+        chart-series="subject_areas_series">
+    </canvas>
+</div>
+<br/>
+<div>
+    <h3>Recently Published Articles</h3>
     <div class="card" ng-repeat="abs in abstracts">
         <div class="card-block">
             <h4 class="card-title">{{abs.title}}</h4>
